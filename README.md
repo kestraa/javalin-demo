@@ -33,7 +33,7 @@ To run the application, just use **gradle** on console. The application will sta
 gradle run
 ```
 
-PS. You must provide a token to make requests. The token can be any value on **Authorization** header, like exemple below:
+PS. You must provide a token to make requests. The token can be any value on **Authorization** header, like example below:
  
  ```shell script
 curl -X POST --url http://localhost:8080/user \
