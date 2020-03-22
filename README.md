@@ -29,25 +29,33 @@ This demo shows us some simple use cases most common in API:
 
 To run the application, just use **gradle** on console. The application will start on *http://localhost:8080*.
 
-```bash
-$ gradle run
+```shell script
+gradle run
 ```
 
-PS. You must provide a token to make requests. The token can be any value on **Authorization** header.
+PS. You must provide a token to make requests. The token can be any value on **Authorization** header, like exemple below:
  
+ ```shell script
+curl -X POST --url http://localhost:8080/user \
+  -H 'authorization: k123-xyz987' \
+  -H 'content-type: application/json' \
+  -d '{ "name": "Keuller", "email": "keuller.magalhaes@kestraa.com", "password": "12345" }'
+```
+
 ## Generate Uber JAR
 
-```bash
-$ gradle clean build
+```shell script
+ gradle clean build
 ```
 
 ## Generate Docker Image
 
-```bash
+```shell script
 docker build . -t javalin-demo
 ```
 
 ## Running Docker Image
-```bash
+
+```shell script
 docker run --rm --name=javalinapp -p 8080:8080 javalin-demo
 ```
