@@ -49,8 +49,8 @@ val configApp = Consumer<JavalinConfig> { config ->
 
 // application events
 val applicationEvents = Consumer<EventListener> { event ->
-    event.serverStarted { logger.info("[INFO] Application has been started.") }
-    event.serverStopped { logger.info("[INFO] Application has been stoped.") }
+    event.serverStarted { logger.info("Application has been started.") }
+    event.serverStopped { logger.info("Application has been stoped.") }
 }
 
 // handler that will be performed before all other handlers
@@ -113,6 +113,8 @@ fun main() {
             get("/:name", messageHandler)
             post("/user", saveUserHandler)
         }
+    
+    Runtime.getRuntime().addShutdownHook(Thread() { app.stop() })
     
     app.start("localhost", 8080)
 }
