@@ -35,3 +35,8 @@ $ gradle run
 
 PS. You must provide a token to make requests. The token can be any value on **Authorization** header.
  
+## Generate Uber JAR
+
+```bash
+$ gradle clean build
+```
