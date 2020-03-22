@@ -13,6 +13,8 @@ import io.javalin.plugin.openapi.OpenApiOptions
 import io.javalin.plugin.openapi.OpenApiPlugin
 import io.javalin.plugin.openapi.ui.SwaggerOptions
 import io.swagger.v3.oas.models.info.Info
+import org.eclipse.jetty.server.Server
+import org.eclipse.jetty.util.thread.QueuedThreadPool
 import org.slf4j.LoggerFactory
 import java.util.Objects.isNull
 import java.util.concurrent.CompletableFuture
@@ -41,6 +43,7 @@ fun openApiConfig(): OpenApiOptions {
 
 // Javalin configuration
 val configApp = Consumer<JavalinConfig> { config ->
+    config.server { Server(QueuedThreadPool(100, 25, 30_000)) }
     config.defaultContentType = "application/json; charset=UTF-8"
     config.showJavalinBanner = false
     config.enableCorsForAllOrigins()
@@ -103,6 +106,8 @@ val saveUserHandler = Handler { ctx ->
 }
 
 fun main() {
+    val config = ConfigurationLoader.load("config.json")
+    
     val app = Javalin.create(configApp)
         .events(applicationEvents)
         .exception(Exception::class.java, exceptionHandler)
@@ -116,5 +121,5 @@ fun main() {
     
     Runtime.getRuntime().addShutdownHook(Thread() { app.stop() })
     
-    app.start("0.0.0.0", 8080)
+    app.start(config.server.host, config.server.port)
 }

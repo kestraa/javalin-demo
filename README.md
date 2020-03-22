@@ -13,6 +13,8 @@ This demo shows us some simple use cases most common in API:
    * Asynchronous requests
    * Exception handler
    * Open API documentation via Plugin
+   * Read external configuration via Json loader
+   * Optimize Jetty runtime with custom Thread pool
 
 ## Endpoints
 
