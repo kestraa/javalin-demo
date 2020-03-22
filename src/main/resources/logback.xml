@@ -9,6 +9,7 @@
         </encoder>
     </appender>
 
+    <logger name="org.eclipse.jetty" level="WARN" />
     <logger name="com.kestraa.javali" level="INFO" />
 
     <root level="INFO">

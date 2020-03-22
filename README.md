@@ -25,7 +25,7 @@ This demo shows us some simple use cases most common in API:
 | GET    | /docs    | Demonstrates a basic OpenAPI documentation |
 | GET    | /swagger | Swagger json information about API   |
 
-## Running 
+## Running Locally
 
 To run the application, just use **gradle** on console. The application will start on *http://localhost:8080*.
 
@@ -39,4 +39,15 @@ PS. You must provide a token to make requests. The token can be any value on **A
 
 ```bash
 $ gradle clean build
+```
+
+## Generate Docker Image
+
+```bash
+docker build . -t javalin-demo
+```
+
+## Running Docker Image
+```bash
+docker run --rm --name=javalinapp -p 8080:8080 javalin-demo
 ```

@@ -116,5 +116,5 @@ fun main() {
     
     Runtime.getRuntime().addShutdownHook(Thread() { app.stop() })
     
-    app.start("localhost", 8080)
+    app.start("0.0.0.0", 8080)
 }
