@@ -19,7 +19,7 @@ This demo shows us some simple use cases most common in API:
 | Method | Path     | Description   |
 |--------|----------|--------------------------------------|
 | GET    | /        | Basic response                       |
-| GET    | /:name   | Pass a attribute by request          |
+| GET    | /:name   | Pass an attribute by request URI     |
 | GET    | /async   | Demonstrates an asynchronous handler | 
 | POST   | /user    | Gets a JSON object from request body |
 | GET    | /docs    | Demonstrates a basic OpenAPI documentation |
