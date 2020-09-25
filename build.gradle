@@ -18,7 +18,9 @@ configurations {
 dependencies {
     implementation platform('org.jetbrains.kotlin:kotlin-bom')
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-    implementation 'io.javalin:javalin:3.7.0'
+    implementation 'io.javalin:javalin:3.10.1'
+    implementation 'io.javalin:javalin-openapi:3.10.1'
+
     implementation 'ch.qos.logback:logback-classic:1.2.3'
 
     implementation 'io.swagger.core.v3:swagger-core:2.1.1'
