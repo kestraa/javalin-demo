@@ -1,5 +1,5 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.3.70'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
     id 'com.github.johnrengelman.shadow' version '5.2.0'
     id 'application'
 }
@@ -26,8 +26,8 @@ dependencies {
     implementation 'io.swagger.core.v3:swagger-core:2.1.1'
     runtimeOnly 'org.webjars:swagger-ui:3.24.3'
 
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.3'
-    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.10.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.2'
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.11.2'
 }
 
 application {
