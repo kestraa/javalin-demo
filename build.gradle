@@ -18,8 +18,8 @@ configurations {
 dependencies {
     implementation platform('org.jetbrains.kotlin:kotlin-bom')
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-    implementation 'io.javalin:javalin:3.10.1'
-    implementation 'io.javalin:javalin-openapi:3.10.1'
+    implementation 'io.javalin:javalin:3.11.2'
+    implementation 'io.javalin:javalin-openapi:3.11.2'
 
     implementation 'ch.qos.logback:logback-classic:1.2.3'
 
@@ -28,6 +28,10 @@ dependencies {
 
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.2'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.11.2'
+
+    testImplementation "org.jetbrains.kotlin:kotlin-test"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit"
+    testImplementation "io.mockk:mockk:1.10.2"
 }
 
 application {

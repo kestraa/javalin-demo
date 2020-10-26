@@ -27,7 +27,7 @@ val exceptionHandler = ExceptionHandler<Exception> { err, ctx ->
 val beforeHandler = Handler { ctx ->
     val authToken = ctx.header("Authorization")
     val path = ctx.path()
-    val isInsecurePath = ("/" == path || "/swagger" == path || "/docs" == path || path.startsWith("/webjars"))
+    val isInsecurePath = ("/v1" == path || "/v1/swagger" == path || "/v1/docs" == path || path.startsWith("/v1/webjars"))
 
     if (Objects.isNull(authToken) && !isInsecurePath) {
         logger.warn("Unauthorized request to $path")
@@ -38,13 +38,12 @@ val beforeHandler = Handler { ctx ->
 }
 
 // default handler
-val indexHandler = Handler { ctx -> ctx.result("Hello Javalin API!\n") }
+fun indexHandler() = Handler { ctx -> ctx.status(200).result("Javalin Demo API!") }
 
 // this handler demonstrates how to get a path parameter from request, e.g 'name'
 fun messageHandler() = Handler { ctx ->
     val name = ctx.pathParam("name")
-    val res = mapOf("status" to "ok", "message" to "Hello $name!")
-    ctx.json(res)
+    ctx.status(200).json(mapOf("status" to "ok", "message" to "Hello $name!"))
 }
 
 // handler that get data from request and convert it to an object
@@ -64,12 +63,12 @@ internal fun asyncHandler() = Handler { ctx ->
         else
             complete(mapOf<String, Any>("status" to "ok", "message" to "$counter - Delayed result!"))
     }
-    ctx.json(future)
+    ctx.status(200).json(future)
 }
 
 fun registerHandlers() = EndpointGroup {
     before(beforeHandler)
-    get("/", indexHandler)
+    get("/", indexHandler())
     get("/async", asyncHandler())
     get("/:name", messageHandler())
     post("/user", saveUserHandler())

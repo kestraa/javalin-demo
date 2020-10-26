@@ -13,9 +13,7 @@ import java.util.function.Consumer
 
 data class Server(val host: String, val port: Int)
 
-data class AppConfig(
-    val server: Server
-)
+data class AppConfig(val server: Server)
 
 object Configuration {
 
@@ -38,9 +36,10 @@ object Configuration {
 
     // Javalin configuration
     fun configure() = Consumer<JavalinConfig> { config ->
-        config.server { org.eclipse.jetty.server.Server(QueuedThreadPool(100, 25, 30_000)) }
+        config.server { org.eclipse.jetty.server.Server(QueuedThreadPool(75, 25, 15_000)) }
         config.defaultContentType = "application/json; charset=UTF-8"
         config.showJavalinBanner = false
+        config.contextPath = "/v1"
         config.enableCorsForAllOrigins()
         config.registerPlugin(OpenApiPlugin(openApiConfig()))
     }
